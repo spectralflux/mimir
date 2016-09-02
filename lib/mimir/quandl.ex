@@ -8,7 +8,7 @@ defmodule Mimir.Quandl do
 
   def gold_volatility do
     Logger.info("Quandl GET - gold volatility...")
-    
+
     get_quandl_json(@gold_volatility_url)
     |> process_json
     |> get_data
