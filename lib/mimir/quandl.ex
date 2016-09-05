@@ -1,5 +1,6 @@
 defmodule Mimir.Quandl do
   require Logger
+  alias Mimir.Quandl.Data
 
   @json_api_url ".json?api_key="
   @api_key Application.get_env(:mimir, :quandl_api_key)
@@ -9,7 +10,9 @@ defmodule Mimir.Quandl do
   def gold_volatility do
     Logger.info("Quandl GET - gold volatility...")
 
-    get_quandl_json(@gold_volatility_url)
+    quandl_response = get_quandl_json(@gold_volatility_url)
+
+    quandl_response
     |> process_json
     |> get_data
   end
@@ -20,11 +23,15 @@ defmodule Mimir.Quandl do
 
   defp process_json {:error, reason} do
     Logger.error("Quandl GET failed. reason: " <> reason)
+    :error
   end
 
   defp process_json {:ok, response} do
     Logger.info("Quandl GET success - processing...")
-    Poison.decode!(response.body, as: %Mimir.Quandl.Data{})
+    Poison.decode!(response.body, as: %Data{})
+  end
+
+  defp get_data :error do
   end
 
   defp get_data json do
