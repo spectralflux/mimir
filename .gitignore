@@ -20,4 +20,4 @@ erl_crash.dump
 /config/prod.secret.exs
 
 # don't want compiled app either
-mimir
+/mimir
