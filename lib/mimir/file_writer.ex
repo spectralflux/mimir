@@ -2,7 +2,7 @@ defmodule Mimir.FileWriter do
   require Logger
 
   def write_enum_to_file filename, enum do
-    {:ok, file} = File.open(filename, [:append, :utf8])
+    File.rm(filename)
     write_lines enum, filename
   end
 
@@ -17,6 +17,6 @@ defmodule Mimir.FileWriter do
   end
 
   def write_line [date | [val|_]], file do
-    File.write file, date <> "," <> "\n"
+    File.write file, date <> "," <> Float.to_string(val) <> "\n", [:append, :utf8]
   end
 end
