@@ -15,7 +15,8 @@ defmodule Mimir.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :httpoison]]
+    [ mod: {Mimir, []},
+      applications: [:logger, :httpoison, :ecto, :postgrex]]
   end
 
   # Dependencies can be Hex packages:
@@ -30,6 +31,8 @@ defmodule Mimir.Mixfile do
   defp deps do
     [{:httpoison, "~> 0.9.1"},
      {:poison, "~> 2.0"},
-     {:credo, "~> 0.4", only: [:dev, :test]}]
+     {:credo, "~> 0.4", only: [:dev, :test]},
+     {:postgrex, ">= 0.0.0"},
+     {:ecto, "~> 2.0.0"}]
   end
 end

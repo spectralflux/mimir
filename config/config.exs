@@ -20,6 +20,14 @@ use Mix.Config
 #
 #     config :logger, level: :info
 #
+config :mimir, ecto_repos: [Mimir.Repo]
+
+config :mimir, Mimir.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "mimir",
+  username: "postgres",
+  password: "postgres",
+  host: "localhost"
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
