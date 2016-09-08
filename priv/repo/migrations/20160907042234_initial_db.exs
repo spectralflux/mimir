@@ -13,7 +13,8 @@ defmodule Mimir.Repo.Migrations.InitialDb do
 
     create table(:timeseries_data) do
       add :data, :float
-      add :time, :datetime
+      add :data_date, :date
+      add :data_time, :time
       add :source_id, references(:source)
       add :unit_id, references(:unit)
       timestamps
