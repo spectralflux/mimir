@@ -9,6 +9,7 @@ defmodule Mimir.Repo.Migrations.InitialDb do
     create table(:source) do
       add :name, :string
       add :url, :string
+      add :args, :string
     end
 
     create table(:timeseries_data) do

@@ -5,6 +5,7 @@ defmodule Mimir.Models.Source do
   schema "source" do
     field :name, :string
     field :url, :string
+    field :args, :string
 
     belongs_to :timeseries_data, TimeseriesData
   end
